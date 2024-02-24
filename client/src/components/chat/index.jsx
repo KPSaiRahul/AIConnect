@@ -11,7 +11,7 @@ const Chat = () => {
             {/* Sockets = Some JavaScript functions for state manegement  !!!cannot do much in this*/}
             <MultiChatSocket {...chatProps} />
             {/* Component = Chat UI components to show
-            We can do a lot of styling and customization on how it works
+            We can do a lot of styling and customization on how it worksa
         */}
             <MultiChatWindow {...chatProps} style={{ height: "100vh" }} 
             renderChatHeader={(chat) => <Header chat={chat}/>} 
