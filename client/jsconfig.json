@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "paths":{
+            "@/*": ["./src/*"]     //so that we can use @ instead of ./src
+        }
+    }
+}
