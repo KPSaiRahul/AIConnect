@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-// import { PaperAirplaneIcon, PaperClipIcon, XMarkIcon } from '@heroicons/react/24/solid';
-// import Dropzone from 'react-dropzone';
-import MessageFormUI from './MessageFormUI';
-const StandardMessageForm = ({ props, activeChat }) => {
+import  { useState } from 'react'
+import { usePostAiCodeMutation } from "@/state/api";
+import MessageFormUI from './MessageFormUI'
+const AiCode = ({ props, activeChat }) => {
     const [message, setMessage] = useState("");
     const [attachment, setAttachment] = useState("");
+    const [trigger] = usePostAiCodeMutation();
     // const [preview, setPreview] = useState("");
     const handleChange = (e) => setMessage(e.target.value);
 
@@ -14,16 +14,17 @@ const StandardMessageForm = ({ props, activeChat }) => {
         const form = { attachments: at, created: date, sender_username: props.username, text: message, activeChatId: activeChat.id }
 
         props.onSubmit(form);
+        trigger(form);    //triggering api call for openai so it responds to our msg
         setMessage("");
         setAttachment("");
     }
     return (
-        <MessageFormUI 
-        setAttachment={message}
-        handleChange={handleChange}
-        message={message}
-        handleSubmit={handleSubmit}/>
+        <MessageFormUI
+            setAttachment={message}
+            handleChange={handleChange}
+            message={message}
+            handleSubmit={handleSubmit} />
     )
 }
 
-export default StandardMessageForm
+export default AiCode

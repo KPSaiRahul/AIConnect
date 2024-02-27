@@ -40,3 +40,9 @@ npm i express body-parser cors dotenv helmet morgan
 ```
 npm i -D nodemon
 ```
+
+<p>4. Installing openai</p>
+
+```
+npm i openai
+```
